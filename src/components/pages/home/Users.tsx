@@ -11,10 +11,8 @@ function Home() {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const data = Object.fromEntries(form.entries());
-
     try {
-      await axios.post(URL, data);
-      fetchData();
+      await axios.post("https://localhost:3000/users", data);
     } catch (err) {
       console.log(err);
     }
@@ -36,7 +34,7 @@ function Home() {
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-2 items-center">
-        <input required type="text" name="name" placeholder="Name" className="p-2 border-1 rounded-md" />
+        <input required type="text" name="rasm" placeholder="Name" className="p-2 border-1 rounded-md" />
         <input required type="number" name="age" placeholder="Age" className="p-2 border-1 rounded-md" />
         <input required type="tel" name="tel" placeholder="Tel" className="p-2 border-1 rounded-md" />
         <select required name="course" className="border-1 p-2 rounded-md">
@@ -44,8 +42,9 @@ function Home() {
           <option value="Backend">Backend</option>
           <option value="Mobile">Mobile</option>
           <option value="AI">AI</option>
+          <div className="Card">h1</div>
         </select>
-        <button>Enter</button>
+        <button className="btn bg-blue-600 p-1.5 rounded-full text-white">Enter</button>
       </form>
 
       <div>
